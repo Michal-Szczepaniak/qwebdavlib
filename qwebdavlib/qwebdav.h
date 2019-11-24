@@ -99,6 +99,8 @@ public:
 
     QNetworkReply* search(const QString& path, const QString& query);
 
+    QNetworkRequest getRequest(const QString& path);
+
     QNetworkReply* get(const QString& path);
     QNetworkReply* get(const QString& path, QIODevice* data);
     QNetworkReply* get(const QString& path, QIODevice* data, quint64 fromRangeInBytes);

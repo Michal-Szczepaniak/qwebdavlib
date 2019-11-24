@@ -407,6 +407,22 @@ QNetworkReply* QWebdav::search(const QString& path, const QString& q )
     return this->createRequest("SEARCH", req, query);
 }
 
+QNetworkRequest QWebdav::getRequest(const QString& path)
+{
+    QNetworkRequest req;
+
+    QUrl reqUrl(m_baseUrl);
+    reqUrl.setPath(absolutePath(path));
+
+#ifdef DEBUG_WEBDAV
+    qDebug() << "QWebdav::get() url = " << req.url().toString(QUrl::RemoveUserInfo);
+#endif
+
+    req.setUrl(reqUrl);
+
+    return req;
+}
+
 QNetworkReply* QWebdav::get(const QString& path)
 {
     QNetworkRequest req;
